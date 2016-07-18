@@ -29,7 +29,8 @@ packageTask.getHandler = function (grunt) {
             'include_time': true,
             'include_version': true,
             'package_folder': './',
-            'include_files': []
+            'include_files': [],
+            'flatten': false
         });
 
         var pkg = JSON.parse(fs.readFileSync(path.resolve(options.package_folder + '/package.json'), "utf8"));
@@ -92,7 +93,8 @@ packageTask.getHandler = function (grunt) {
                             src: options.include_files,
                             dot: true,
                             expand: true,
-                            cwd: options.package_folder
+                            cwd: options.package_folder,
+                            flatten: options.flatten
                         }
                     ]);
                 }
